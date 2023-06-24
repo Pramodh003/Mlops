@@ -1,1 +1,1 @@
-# Mlops
+# End to end machine learning project
