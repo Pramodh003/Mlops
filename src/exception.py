@@ -1,5 +1,6 @@
 import sys
-import logging
+from src.logger import logging
+
 def error_message_handling(error,error_detail:str):
     _,_,exc_tb=error_detail.exc_info()
     file_name=exc_tb.tb_frame.f_code.co_filename
@@ -8,7 +9,7 @@ def error_message_handling(error,error_detail:str):
     return error_message    
     
     
-class CUstomMessage(Exception):
+class CustomException(Exception):
     def __init__(self,error_message,error_detail:str):
         super().__init__(error_message)
         self.error_message=error_message_handling(error_message,error_detail=error_detail)
@@ -16,10 +17,10 @@ class CUstomMessage(Exception):
     def __str__(self):
         return self.error_message    
     
-if __name__=="__main__":
-    try:
-        a=1/0
-    except Exception as e:
-        logging.info("Error has occured")
-        raise CUstomMessage(e,sys)
+# if __name__=="__main__":
+#     try:
+#         a=1/0
+#     except Exception as e:
+#         logging.info("Error has occured")
+#         raise CUstomMessage(e,sys)
     
